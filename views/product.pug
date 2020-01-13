@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    header 
+        img.logo
+        .menu 
+            a(href="/") home
+            a(href="/contacts") contacts
+    main
+        h1 product 
+        img(src=product.img  alt="")
+        .product-name #{product.productName }
+        .price #{product.price} usd    
+        a(href="/product/1") go to product

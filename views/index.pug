@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  include includes/nav.pug 
+  main
+    h1 home 
+    each product in products
+      .card
+        img(src=product.img  alt="")
+        .product-name #{product.productName }
+        .price #{product.price} usd    
+        a(href="/product/1") go to product
+        button(onclick="remove(this)", data-id=product._id) delete 
+        button(onclick="add(this)", data-product=product) add
+        
+    script(src="js/index.js")

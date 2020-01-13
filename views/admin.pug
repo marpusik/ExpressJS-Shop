@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    include includes/nav.pug 
+    main
+        h1 admin page
+        form(action='/admin' method='post')
+            | productName:
+            br
+            input(type='text' name='productName' value='')
+            br
+            | price:
+            br
+            input(type='number' name='price' value='')
+            br
+            | currency:
+            select#select
+                option(value='$', selected) Доллар
+                option(value='Br') Рубли
+            br
+            input(type='submit' value='Submit')
+            
+                                         

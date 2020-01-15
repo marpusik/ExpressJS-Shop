@@ -1,8 +1,29 @@
 header 
-  img.logo
-  .menu 
-    a(href="/") home
-    a(href="/contacts") contacts
-    a(href="/admin") admin
-    button#basket basket 
-  script(src="js/nav.js")
+  button#basket basket 
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+    a.navbar-brand(href='#') Navbar
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarColor01' aria-controls='navbarColor01' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarColor01.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item.active
+          a.nav-link(href='/')
+            | Home 
+            span.sr-only (current)
+        li.nav-item
+          a.nav-link(href='/contacts') Contacts
+        li.nav-item
+          a.nav-link(href='/admin') Admin
+        li.nav-item
+          a.nav-link(href='#') About
+      form.form-inline.my-2.my-lg-0
+        input.form-control.mr-sm-2(type='text' placeholder='Search')
+        button.btn.btn-secondary.my-2.my-sm-0(type='submit') Search
+script(src="js/nav.js")
+.basket 
+  .card.text-white.bg-info.mb-3(style='max-width: 20rem;')
+    .card-header Header
+    .card-body
+      h4.card-title Info card title
+      p.card-text
+        | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.

@@ -19,11 +19,45 @@ header
       form.form-inline.my-2.my-lg-0
         input.form-control.mr-sm-2(type='text' placeholder='Search')
         button.btn.btn-secondary.my-2.my-sm-0(type='submit') Search
-script(src="js/nav.js")
-.basket 
-  .card.text-white.bg-info.mb-3(style='max-width: 20rem;')
+
+.basket.hidden  
+   .card.text-white.bg-info.mb-3(style='max-width: 20rem;')
     .card-header Header
     .card-body
       h4.card-title Info card title
       p.card-text
-        | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+      .item
+        .product
+          .thumb-img
+            img(src='images/pc2.jpg')
+            .actions
+              a.share-button(href='')
+                i.fa.fa-search
+              span.share-wrap
+                a.share-button(href='')
+                  i.fa.fa-cloud
+                span.share-item
+                  a.share-button(href='')
+                    i.fa.fa-facebook
+                  a.share-button(href='')
+                    i.fa.fa-twitter
+                  a.share-button(href='')
+                    i.fa.fa-google-plus
+                  a.share-button(href='')
+                    i.fa.fa-pinterest-p
+              a.share-button(href='')
+                i.fa.fa-heart-o
+              a.add-to-cart(href='') Basket
+          .product-about
+            h3.product-title
+              a(href='') Computer
+            span.price
+              i.fa.fa-rub
+                500 $
+script(src="js/nav.js")
+
+
+
+
+
+

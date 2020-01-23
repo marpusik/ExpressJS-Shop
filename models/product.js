@@ -30,10 +30,13 @@ let Product = mongoose.model('Product', {
       voutes: []
     },
     breadCrumbs: []
-});
-
+    });
 
 module.exports = Product;
+
+
+
+
 
 
 

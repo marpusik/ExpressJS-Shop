@@ -1,13 +1,3 @@
-const basket = [
-    {
-        amount: 1,
-        product: { _id: '5e1229fff828b62f188ee2e6' }
-    },
-    {
-        amount: 3,
-        product: { _id: '6e1229fff828b62f188ee2e6' }
-    }
-]
 console.log('Hello!')
 async function remove(self) {
     console.log(self.dataset)

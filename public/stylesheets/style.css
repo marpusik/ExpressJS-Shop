@@ -168,4 +168,12 @@ a {
   display: none;
 }
 
+.card-header > .close {
+position: relative;
+right: 0;
+}
 
+.basket-img{
+width: 5em !important;
+
+}

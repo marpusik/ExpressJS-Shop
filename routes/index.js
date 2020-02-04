@@ -59,6 +59,22 @@ router.delete('/product', async function (req, res) {
   })
   res.json({ ok: true })
 })
+
+router.get('/products', async function (req, res) {
+  try {
+    const allId = req.query.id.split(',')
+    console.log(allId)
+    const promises = []
+    allId.map((id) => {
+      promises.push(Product.findById(id))
+    })
+    const products = await Promise.all(promises)
+    res.json({ ok: true, products })
+  } catch (error) {
+    res.json({ ok: false, error })
+  }
+})
+
 module.exports = router;
 
 

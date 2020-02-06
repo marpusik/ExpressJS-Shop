@@ -5,7 +5,7 @@ const navbarToggler = document.querySelector('.navbar-toggler')
 const navbarCollapse = document.querySelector('#navbarColor01')
 const basketProducts = document.querySelector('.basket .products')
 
-const basket = [
+let basket = [
     {
         amount: 1,
         product: { _id: '5e17686bd8ea432bf414aad0' }
@@ -16,10 +16,14 @@ const basket = [
     }
 ]
 
+
+let resultProducts = []
+
+
 // open basket 
 btnBasket.addEventListener('click', () => {
     console.log('click')
-    getProductsFromBack ()
+    getProductsFromBack()
     basketPopUp.classList.remove('hidden')
 })
 // close basket 
@@ -32,28 +36,52 @@ navbarToggler.addEventListener('click', () => {
     navbarCollapse.classList.remove('collapse')
 })
 
-function showProducts(result) {
-    const newBasket = basket.map((item)=>{
-        item.product= result.filter((p)=>{
-            console.log(p._id==item._id)
-            return p._id == item._id   
+function addAmount(i) {
+    basket[i].amount++
+    showProducts()
+    console.log('addAmount', i, basket)
+}
+
+function minusAmount(i) {
+    basket[i].amount--
+    showProducts()
+    console.log('minusAmount', i, basket)
+}
+
+function fillBasket() {
+    basket = basket.map((item) => {
+        item.product = resultProducts.filter((p) => {
+            console.log(p._id == item.product._id, p, item)
+            return p._id == item.product._id
         })[0]
         return item
     })
-    console.log(newBasket)
+}
+
+function showProducts() {
+    console.log(basket)
     let template = ''
-    result.forEach(product => {
+    basket.forEach((item, i) => {
         template += `
-        <div class = "basket-product">${product._id}</div>
-        <img class = "basket-img" src= "${product.img}">
+        <div class = "basket-product">
+            <div class = "first">
+                <div class = "basket-productName">${item.product.productName}</div>
+                <img class = "basket-img" src= "${item.product.img}">
+            </div>
+            <div class = "second">
+             <button onclick="addAmount(${i})"> + </button>
+             <div class = "basket-amount">${item.amount}</div>
+             <button onclick="minusAmount(${i})"> - </button>
+            </div>
+        </div>
     `
     });
     basketProducts.innerHTML = template
 }
 
-async function getProductsFromBack () {
+async function getProductsFromBack() {
     console.log('getProductsFromBack')
-    const allId = basket.map((item)=>{
+    const allId = basket.map((item) => {
         console.log('item', item)
         return item.product._id
     })
@@ -61,10 +89,12 @@ async function getProductsFromBack () {
     const allIdString = allId.join(',')
     console.log(allIdString)
     //'5e17686bd8ea432bf414aad0,5e176877d8ea432bf414aad1'
-    const response = await fetch ('/products?id='+allIdString)
-    const result = await response.json ()
-    console.log (result)
-    showProducts(result.products)
+    const response = await fetch('/products?id=' + allIdString)
+    const result = await response.json()
+    console.log(result)
+    resultProducts = result.products
+    fillBasket()
+    showProducts()
 }
 
 

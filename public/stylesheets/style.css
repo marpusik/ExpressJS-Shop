@@ -177,3 +177,17 @@ right: 0;
 width: 5em !important;
 
 }
+
+.basket-product{
+  display: flex;
+  margin: 0 0 1em 0 ;
+}
+
+.basket-product .first{
+  background-color: chartreuse;
+}
+
+.basket-product .second{
+  background-color: crimson;
+  display: flex;
+}
